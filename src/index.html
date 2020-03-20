@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>Hello Vue.js</title>
+  <link rel="stylesheet" href="css/main.css">
+</head>
+
+<body>
+  <div id="app">
+    <h2>
+      Bitcoin Price
+      <p>
+      {{ message }}
+      </p>
+      <p v-html="message"></p>
+      <button v-on:click="clickHandler">
+        click!
+      </button>
+    </h2>
+    <h2>
+      <p v-cloak>
+        {{ message }}
+      </p>
+    </h2>
+    <section v-if="hasError">
+      Error.
+    </section>
+    <section v-else>
+      <div v-if="loading">
+        Loading...
+      </div>
+      <ul v-cloak>
+        <li v-for="(rate, currency) in bpi">
+          {{ currency }} : {{ rate.rate_float | currencyDecimal }}
+        </li>
+      </ul>
+    </section>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.11"></script>
+  <script src="https://cdn.jsdelivr.net/npm/axios@0.19.2/dist/axios.min.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
